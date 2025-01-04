@@ -4,16 +4,18 @@ import {MealType} from "@/types";
 import Link from "next/link";
 
 type PageProps = {
-    searchParams: Promise<{ b: string, v?: string, area?: string, id: string }>
+    params: Promise<{id: string}>
+    searchParams: Promise<{ b: string, v?: string, area?: string, search?: string, i?: string }>
 }
 
 
-const MealDetails = async ({searchParams}: PageProps) => {
-
+const MealDetails = async ({params, searchParams}: PageProps) => {
+    const {id} = await params;
     const queryParams = await searchParams
     let mealData: { meals: MealType[] } = {meals: []};
+
     try {
-        mealData = await getMealById(queryParams.id);
+        mealData = await getMealById(id);
     } catch (e) {
         console.log(e)
     }
@@ -37,18 +39,51 @@ const MealDetails = async ({searchParams}: PageProps) => {
     const countries: { [key: string]: string } = {}
     countryCodes.forEach((c: { Name: string, Code: string }) => countries[c.Name] = c.Code)
 
-
-    return (
-        <div className="p-4 m-auto max-w-5xl">
-            <header
-                className="flex justify-between items-center my-8 mx-4 max-w-5xl p-8 shadow-2xl rounded lg:mx-auto">
+    const renderNavigationAnchor = () => {
+        if (queryParams?.b && queryParams?.v) {
+            return (
                 <Link href={`/meals/${queryParams.b}?${queryParams.b}=${queryParams.v}`}
                       className="bg-slate-800 p-2 rounded text-slate-300">
                     {`Back to ${queryParams.v?.toLowerCase() + " " + queryParams.b}`}
                 </Link>
-                <h1 className="text-center font-bold text-slate-300 text-3xl my-8">{mealData.meals[0].strMeal}</h1>
-            </header>
+            )
+        }
+        else if (queryParams?.search) {
+            return (
+                <Link href={`/meals${queryParams?.search ? "?search=" + queryParams?.search : ""}`}
+                      className="bg-slate-800 p-2 rounded text-slate-300">
+                    {`Back to ${queryParams?.search} search results`}
+                </Link>
+            )
+        }
+        else if(queryParams?.i) {
+            return (
+                <Link href={`/meals?i=${queryParams?.i}`}
+                  className="bg-slate-800 p-2 rounded text-slate-300">
+                {`Back to search results`}
+                </Link>
+            )
+        }
+    }
 
+    return (
+        <div className="p-4 m-auto max-w-5xl">
+            <div
+                className="flex justify-between items-center flex-wrap my-8 mx-4 max-w-5xl px-8 lg:mx-auto">
+                <div className="flex justify-between items-center gap-4">
+                    {renderNavigationAnchor()}
+                    {mealData.meals[0]?.strYoutube &&
+                        <a href={mealData.meals[0].strYoutube}
+                           target="_blank"
+                           className="bg-slate-800 p-2 rounded text-slate-300">Youtube</a>}
+                    {mealData.meals[0]?.strSource &&
+                        <a href={mealData.meals[0].strSource}
+                           target="_blank"
+                           className="bg-slate-800 p-2 rounded text-slate-300">Source Link</a>}
+                </div>
+
+            </div>
+            <h1 className="text-center font-bold text-slate-300 text-2xl my-8">{mealData.meals[0].strMeal}</h1>
             {/*<div></div>*/}
             {/*<img src={`https://flagsapi.com/JP/flat/64.png`}/>*/}
             <div className="flex flex-wrap justify-center gap-8 mb-3 px-4">
@@ -73,6 +108,7 @@ const MealDetails = async ({searchParams}: PageProps) => {
             </div>
             <pre dangerouslySetInnerHTML={{__html: mealData.meals[0].strInstructions}}
                  className="whitespace-break-spaces border-y-2 border-slate-500/50 p-4 my-4 text-slate-300"/>
+
         </div>
     )
 }
