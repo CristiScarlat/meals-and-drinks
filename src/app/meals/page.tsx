@@ -1,4 +1,4 @@
-import {getLatestMeals, searchMealsByIngredients, searchMealsByName} from "@/api/mealDBApi";
+import {getLatestMeals, searchMealsByName} from "@/api/mealDBApi";
 import {MealType} from "@/types";
 import Link from "next/link";
 

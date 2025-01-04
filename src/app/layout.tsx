@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "../components/header";
-import {getAllMealAreas, getAllMealCategories} from "@/api/mealDBApi";
-import {MealArea, MealCategory, MealsHeaderData} from "@/types";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
