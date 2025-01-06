@@ -17,12 +17,15 @@ export const metadata: Metadata = {
     description: "Collection of meals and cocktails recipes",
     publisher: "Cristi Scarlat",
     keywords: "meals, drinks, cocktails, food",
+    alternates: {
+        canonical: "https://mealswithdrinks.com",
+    },
     openGraph: {
         siteName: "mealswithdrinks.com",
         type: "website",
         title: "mealswithdrinks",
         description: "Collection of meals and cocktails recipes",
-        url: "https://mealswithdrinks.com/",
+        url: "https://mealswithdrinks.com",
         images: ["https://mealswithdrinks.com/images/home_drinks.jpg"]
     },
     twitter: {
