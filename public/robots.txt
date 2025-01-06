@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mealswithdrinks.com
+
+# Sitemaps
+Sitemap: https://mealswithdrinks.com/sitemap.xml
