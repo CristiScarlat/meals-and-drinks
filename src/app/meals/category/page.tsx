@@ -1,4 +1,4 @@
-import {getMealsByCategory} from "@/api/mealDBApi";
+import {getMealsByCategory} from "@/services/mealDBApi";
 import {MealType} from "@/types";
 import Link from "next/link";
 
