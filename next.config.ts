@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
             fullUrl: true,
         },
     },
+    trailingSlash: true,
     async headers() {
         return [
             {
