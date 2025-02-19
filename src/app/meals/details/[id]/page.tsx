@@ -2,6 +2,7 @@ import {getMealById} from "@/api/mealDBApi";
 import countryCodes from "@/data/countryCodes.json"
 import {MealType} from "@/types";
 import Link from "next/link";
+import Image from "@/components/image";
 
 type PageProps = {
     params: Promise<{id: string}>
@@ -87,7 +88,7 @@ const MealDetails = async ({params, searchParams}: PageProps) => {
             {/*<div></div>*/}
             {/*<img src={`https://flagsapi.com/JP/flat/64.png`}/>*/}
             <div className="flex flex-wrap justify-center gap-8 mb-3 px-4">
-                <img src={mealData.meals[0].strMealThumb} alt="meal" className="max-w-80 rounded object-cover"/>
+                <Image src={mealData.meals[0].strMealThumb} alt="meal" className="max-w-80 rounded object-cover"/>
                 <div className="hidden border-l-2 border-slate-500/50 md:block"></div>
                 <table className="min-w-80 border-separate">
                     <thead>

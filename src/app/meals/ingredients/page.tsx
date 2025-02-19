@@ -2,6 +2,7 @@ import {getAllMealIngredients, searchMealsByIngredients} from "@/api/mealDBApi";
 import {MealIngredient, MealType} from "@/types";
 import Carousel from "@/components/carousel";
 import Link from "next/link";
+import Image from "@/components/image";
 
 type PageProps = {
     searchParams: Promise<{ i: string }>
@@ -37,7 +38,7 @@ const MealsByIngredients = async ({searchParams}: PageProps) => {
                          className="max-w-80 rounded-2xl shadow-xl transition-all bg-slate-800 cursor-pointer hover:shadow-slate-700">
                         <Link
                             href={`/meals/details/${meal.idMeal}${queryParams?.i ? "?search=" + queryParams?.i : ""}`}>
-                            <img src={meal?.strMealThumb} alt="meal" className="max-w-80 rounded-t-2xl"/>
+                            <Image src={meal?.strMealThumb} alt="meal" className="max-w-80 rounded-t-2xl"/>
                         </Link>
                         <p className="text-slate-400 font-bold text-center p-3">{meal?.strMeal}</p>
                     </div>
