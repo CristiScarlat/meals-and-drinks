@@ -1,8 +1,7 @@
 'use client'
-import { useState } from 'react'
+import { useState, ImgHTMLAttributes } from 'react'
 
-
-const Image = (props: any) => {
+const Image = (props: ImgHTMLAttributes<HTMLImageElement>) => {
 
     const [error, setError] = useState<boolean>(false);
     return (
