@@ -1,6 +1,6 @@
 import Header from "@/components/header";
 import {MealArea, MealCategory, MealsHeaderData} from "@/types";
-import {getAllMealAreas, getAllMealCategories} from "@/services/mealDBApi";
+import {getAllMealAreas, getAllMealCategories} from "@/api/mealDBApi";
 
 type MealData = {
     meals: MealCategory[] | MealArea[];

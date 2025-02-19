@@ -1,4 +1,4 @@
-import {getAllMealIngredients, searchMealsByIngredients} from "@/services/mealDBApi";
+import {getAllMealIngredients, searchMealsByIngredients} from "@/api/mealDBApi";
 import {MealIngredient, MealType} from "@/types";
 import Carousel from "@/components/carousel";
 import Link from "next/link";

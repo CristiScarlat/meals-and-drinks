@@ -1,4 +1,4 @@
-import {getMealById} from "@/services/mealDBApi";
+import {getMealById} from "@/api/mealDBApi";
 import countryCodes from "@/data/countryCodes.json"
 import {MealType} from "@/types";
 import Link from "next/link";
